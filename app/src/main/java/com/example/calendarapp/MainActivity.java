@@ -45,22 +45,23 @@ public class MainActivity extends AppCompatActivity implements CalendarAdapter.O
 
     private ArrayList<String> daysInMonthArray(LocalDate date)
     {
+        //creates new arrayList
         ArrayList<String> daysInMonthArray = new ArrayList<>();
+
+        //creates new yearMonth object
         YearMonth yearMonth = YearMonth.from(date);
 
-        int daysInMonth = yearMonth.lengthOfMonth();
-
+        //gets number of days in the month
+        int numOfDays = yearMonth.lengthOfMonth();
         LocalDate firstOfMonth = selectedDate.withDayOfMonth(1);
         int dayOfWeek = firstOfMonth.getDayOfWeek().getValue();
 
-        for(int i = 1; i <= 42; i++)
-        {
-            if(i <= dayOfWeek || i > daysInMonth + dayOfWeek)
-            {
+        //adds days or blank days to an
+        for(int i = 1; i <= 42; i++) {
+            if(i <= dayOfWeek || i > numOfDays + dayOfWeek) {
                 daysInMonthArray.add("");
             }
-            else
-            {
+            else {
                 daysInMonthArray.add(String.valueOf(i - dayOfWeek));
             }
         }

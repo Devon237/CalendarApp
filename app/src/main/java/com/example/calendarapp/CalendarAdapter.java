@@ -8,6 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import android.util.Log;
 
 public class CalendarAdapter extends RecyclerView.Adapter<CalendarViewHolder>
 {
@@ -28,13 +29,15 @@ public class CalendarAdapter extends RecyclerView.Adapter<CalendarViewHolder>
         View view = inflater.inflate(R.layout.calendar_cell, parent, false);
         ViewGroup.LayoutParams layoutParams = view.getLayoutParams();
         layoutParams.height = (int) (parent.getHeight() * 0.166666666);
-        return new CalendarViewHolder(view, onItemListener);
+        return new CalendarViewHolder(view);
     }
 
+    //Sets the text for each individual cell
     @Override
-    public void onBindViewHolder(@NonNull CalendarViewHolder holder, int position) {
+    public void onBindViewHolder(CalendarViewHolder holder, int position) {
         holder.dayOfMonth.setText(daysOfMonth.get(position));
     }
+
 
     @Override
     public int getItemCount() {
